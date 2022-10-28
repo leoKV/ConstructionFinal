@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ConstructionFinal.Contratistas>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link rel="stylesheet" href="~/Content/css/main.css" />
+    <style>
+        body{
+            color:white;
+        }
+    </style>
+}
+<h2>Mis contratos</h2>
+
+@*<iframe src="https://localhost:44302/Arquitectos/Contrato/1" width="100%" height="400px"></iframe>*@
+
+@*<h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreCompleto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.foto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ciudad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.domicilio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.correo)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.foto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ciudad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.domicilio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.correo)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.codigoC }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.codigoC }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.codigoC })
+                </td>
+            </tr>
+        }
+    </table>*@
+
+@*<script>
+        window.location.href = "https://localhost:44302/Arquitectos/GenerarContrato";
+    </script>*@

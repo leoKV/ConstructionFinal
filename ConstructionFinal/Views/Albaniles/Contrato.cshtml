@@ -1,0 +1,76 @@
+﻿@model ConstructionFinal.Albaniles
+@{
+    ViewBag.Title = "Contrato";
+    Layout = null;
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construction.com</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        body {
+            margin-left: 20px;
+        }
+    </style>
+}
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("CONSTRUCTION.COM", "Index", "Home")</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+
+<div style="height: 595.3px; width: 841.9px;">
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:150%;text-align:center;'><strong><span style='font-size:21px;line-height:150%;font-family:"Arial",sans-serif;color:black;'>CONTRATO DE PRESTACI&Oacute;N DE SERVICIOS PROFESIONALES PARA CONSTRUCCI&Oacute;N DE INMUEBLE</span></strong></p>
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:150%;text-align:start;'><span style='font-family:"Arial",sans-serif;color:black;'>El d&iacute;a __ @DateTime.Now.Day __del mes__@DateTime.Now.Month __del año__ @DateTime.Now.Year __acuerdan los se&ntilde;ores __ Ricardo Muro Gómez __ y __ @Html.DisplayFor(model => model.nombreCompleto) __, ambas partes celebran un contrato de prestaci&oacute;n de servicios profesionales, que someten al tenor de las siguientes declaraciones y cl&aacute;usulas:&nbsp;</span></p>
+
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:107%;'><span style="color:black;">_____________________________________________________________________________________________________________________________</span></p>
+
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:150%;text-align:start;'><strong><span style='font-family:"Arial",sans-serif;color:black;'>DECLARACI&Oacute;N &Uacute;NICA&nbsp;</span></strong></p>
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:150%;text-align:start;'><strong><span style='font-family:"Arial",sans-serif;color:black;'>&Uacute;NICA:&nbsp;</span></strong><span style='font-family:"Arial",sans-serif;color:black;'>Manifiesta el Sr. __Ricardo Muro Gómez__, ser el legitimo propietario de un terreno. El Sr. __Ricardo Muro Gómez__, comprueba haber adquirido dicho terreno,por escritura que se encuentra inscritas en el Registro P&uacute;blico de la Propiedad. Con la declaraci&oacute;n anterior las referidas partes han acordado celebrar un contrato de prestaci&oacute;n de servicios profesionales, el cual esta sujeto a las siguientes clausulas:&nbsp;</span></p>
+
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:107%;'><span style="color:black;">_____________________________________________________________________________________________________________________________</span></p>
+
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:150%;text-align:start;'><strong><span style='font-family:"Arial",sans-serif;color:black;'>CL&Aacute;USULAS&nbsp;</span></strong></p>
+
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:107%;'><span style="color:black;">_____________________________________________________________________________________________________________________________</span></p>
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:150%;text-align:start;'><strong><span style='font-family:"Arial",sans-serif;color:black;'>CONTRATISTA</span></strong></p>
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:150%;text-align:start;'><strong><span style='font-family:"Arial",sans-serif;color:black;'>PRIMERA</span></strong><span style='font-family:"Arial",sans-serif;color:black;'>.- El Sr. __Ricardo Muro Gómez__que vive actualmente en la ciudad de__Dolores Hidalgo__, con domicilio en la calle__San Cristobal #18__, con numero de telefono__4181132739__ y correo electronico__ricardo@gmail.com__, se compromete a realizar el pago o pagos, de manera puntual en las fechas indicadas por el Sr.__@Html.DisplayFor(model => model.nombreCompleto)__, durante el plazo de tiempo establecido de construcción.</span></p>
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:150%;text-align:start;'><strong><span style='font-family:"Arial",sans-serif;color:black;'>SEGUNDA</span></strong><span style='font-family:"Arial",sans-serif;color:black;'>.- El Sr. __Ricardo Muro Gómez__, se compromete a espesificar claramente y sin ambiguedad los requerimientos de construcción (Materiales, planos, diseño etc). Tambien se compromete a solventar todas las dudas que surgan por parte del Sr__@Html.DisplayFor(model => model.nombreCompleto)__ durante el proceso de construcción.</span></p>
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:150%;text-align:start;'><strong><span style='font-family:"Arial",sans-serif;color:black;'>TERCERA</span></strong><span style='font-family:"Arial",sans-serif;color:black;'>.- El Sr. __Ricardo Muro Gómez__, se compromete a comunicarse constantemente con el Sr.__@Html.DisplayFor(model => model.nombreCompleto)__, para monitorear el proceso de construcción del proyecto y evitar posibles inconformidades.</span></p>
+
+
+
+
+
+
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:107%;'><span style="color:black;">_____________________________________________________________________________________________________________________________</span></p>
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:150%;text-align:start;'><strong><span style='font-family:"Arial",sans-serif;color:black;'>ALBAÑIL</span></strong></p>
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:150%;text-align:start;'><strong><span style='font-family:"Arial",sans-serif;color:black;'>PRIMERA</span></strong><span style='font-family:"Arial",sans-serif;color:black;'>.- El Sr. __@Html.DisplayFor(model => model.nombreCompleto)__que vive actualmente en la ciudad de__@Html.DisplayFor(model => model.ciudad)__, con domicilio en la calle__@Html.DisplayFor(model => model.domicilio)__, con numero de telefono__@Html.DisplayFor(model => model.telefono)__ y correo electronico__@Html.DisplayFor(model => model.correo)__, se compromete a prestar sus servicios de mano de obra al Sr. __Ricardo Muro Gómez__, durante el plazo de tiempo establecido.</span></p>
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:150%;text-align:start;'><strong><span style='font-family:"Arial",sans-serif;color:black;'>SEGUNDA</span></strong><span style='font-family:"Arial",sans-serif;color:black;'>.- El Sr. __@Html.DisplayFor(model => model.nombreCompleto)__, se compromete a construir y entregar una(s) edificación(nes) profesional(es) en las fechas indicadas por el Sr.__Ricardo Muro Gómez__</span></p>
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:150%;text-align:start;'><strong><span style='font-family:"Arial",sans-serif;color:black;'>TERCERA</span></strong><span style='font-family:"Arial",sans-serif;color:black;'>.- El Sr. __@Html.DisplayFor(model => model.nombreCompleto)__, se compromete a construir y entregar una(s) edificación(nes) profesional(es) conforme a las espesificaciones del Sr.__Ricardo Muro Gómez__(Planos, tipo de material etc).</span></p>
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:150%;text-align:start;'><strong><span style='font-family:"Arial",sans-serif;color:black;'>CUARTA</span></strong><span style='font-family:"Arial",sans-serif;color:black;'>.- El Sr. __@Html.DisplayFor(model => model.nombreCompleto)__, se compromete a tener constante comunicación con el Sr.__Ricardo Muro Gómez__, para notificar y entregar avances de la construcción del proyecto y evitar posibles reclamos e inconformidades de ambas partes.</span></p>
+
+
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:107%;'><span style="color:black;">_____________________________________________________________________________________________________________________________</span></p>
+
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:150%;text-align:start;'><strong><span style='font-family:"Arial",sans-serif;color:black;'>GENERAL</span></strong><span style='font-family:"Arial",sans-serif;color:black;'>.- En caso de que alguna de las partes interesadas incumpla con los terminos de este contrato, se comprometen a responder y enfrentar los efectos legales que conllevé la clausula o clausulas inflingidas.</span></p>
+    <br />
+    <br />
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:107%;'><span style="color:black;">___________________________&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;_______________________________</span></p>
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:107%;text-align:start;'><span style="font-size:18px;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;Ricardo Muro Gómez&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.nombreCompleto)</span></p>
+    <p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:7.5pt;line-height:107%;'><span style="color:black;">_____________________________________________________________________________________________________________________________</span></p>
+    <p>&copy; @DateTime.Now.Year - Construction.com</p>
+    <br />
+</div>
+
+

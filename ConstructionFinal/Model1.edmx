@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB_CONSTRUCTIONModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Albaniles">
+          <Key>
+            <PropertyRef Name="codigoAl" />
+          </Key>
+          <Property Name="codigoAl" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreCompleto" Type="varchar" MaxLength="100" />
+          <Property Name="foto" Type="varbinary(max)" />
+          <Property Name="ciudad" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="domicilio" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="aniosExpe" Type="tinyint" Nullable="false" />
+          <Property Name="telefono" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Arquitectos">
+          <Key>
+            <PropertyRef Name="codigoAr" />
+          </Key>
+          <Property Name="codigoAr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreCompleto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="foto" Type="varbinary(max)" />
+          <Property Name="ciudad" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="domicilio" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="aniosExpe" Type="tinyint" Nullable="false" />
+          <Property Name="telefono" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contratistas">
+          <Key>
+            <PropertyRef Name="codigoC" />
+          </Key>
+          <Property Name="codigoC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreCompleto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="foto" Type="varbinary(max)" />
+          <Property Name="ciudad" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="domicilio" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="telefono" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContratosCon_Alb">
+          <Key>
+            <PropertyRef Name="codigoCAlb" />
+          </Key>
+          <Property Name="codigoCAlb" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigoC" Type="int" Nullable="false" />
+          <Property Name="codigoAl" Type="int" Nullable="false" />
+          <Property Name="contrato" Type="varbinary(max)" />
+          <Property Name="estatusCon" Type="bit" />
+        </EntityType>
+        <EntityType Name="ContratosCon_Arq">
+          <Key>
+            <PropertyRef Name="codigoCArq" />
+          </Key>
+          <Property Name="codigoCArq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigoC" Type="int" Nullable="false" />
+          <Property Name="codigoAr" Type="int" Nullable="false" />
+          <Property Name="contrato" Type="varbinary(max)" />
+          <Property Name="estatusCon" Type="bit" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="fk_codigoAlb">
+          <End Role="Albaniles" Type="Self.Albaniles" Multiplicity="1" />
+          <End Role="ContratosCon_Alb" Type="Self.ContratosCon_Alb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Albaniles">
+              <PropertyRef Name="codigoAl" />
+            </Principal>
+            <Dependent Role="ContratosCon_Alb">
+              <PropertyRef Name="codigoAl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_codigoAr">
+          <End Role="Arquitectos" Type="Self.Arquitectos" Multiplicity="1" />
+          <End Role="ContratosCon_Arq" Type="Self.ContratosCon_Arq" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arquitectos">
+              <PropertyRef Name="codigoAr" />
+            </Principal>
+            <Dependent Role="ContratosCon_Arq">
+              <PropertyRef Name="codigoAr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_codigoC">
+          <End Role="Contratistas" Type="Self.Contratistas" Multiplicity="1" />
+          <End Role="ContratosCon_Arq" Type="Self.ContratosCon_Arq" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contratistas">
+              <PropertyRef Name="codigoC" />
+            </Principal>
+            <Dependent Role="ContratosCon_Arq">
+              <PropertyRef Name="codigoC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_codigoCon">
+          <End Role="Contratistas" Type="Self.Contratistas" Multiplicity="1" />
+          <End Role="ContratosCon_Alb" Type="Self.ContratosCon_Alb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contratistas">
+              <PropertyRef Name="codigoC" />
+            </Principal>
+            <Dependent Role="ContratosCon_Alb">
+              <PropertyRef Name="codigoC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_CONSTRUCTIONModelStoreContainer">
+          <EntitySet Name="Albaniles" EntityType="Self.Albaniles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Arquitectos" EntityType="Self.Arquitectos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contratistas" EntityType="Self.Contratistas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContratosCon_Alb" EntityType="Self.ContratosCon_Alb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContratosCon_Arq" EntityType="Self.ContratosCon_Arq" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_codigoAlb" Association="Self.fk_codigoAlb">
+            <End Role="Albaniles" EntitySet="Albaniles" />
+            <End Role="ContratosCon_Alb" EntitySet="ContratosCon_Alb" />
+          </AssociationSet>
+          <AssociationSet Name="fk_codigoAr" Association="Self.fk_codigoAr">
+            <End Role="Arquitectos" EntitySet="Arquitectos" />
+            <End Role="ContratosCon_Arq" EntitySet="ContratosCon_Arq" />
+          </AssociationSet>
+          <AssociationSet Name="fk_codigoC" Association="Self.fk_codigoC">
+            <End Role="Contratistas" EntitySet="Contratistas" />
+            <End Role="ContratosCon_Arq" EntitySet="ContratosCon_Arq" />
+          </AssociationSet>
+          <AssociationSet Name="fk_codigoCon" Association="Self.fk_codigoCon">
+            <End Role="Contratistas" EntitySet="Contratistas" />
+            <End Role="ContratosCon_Alb" EntitySet="ContratosCon_Alb" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_CONSTRUCTIONModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Albaniles">
+          <Key>
+            <PropertyRef Name="codigoAl" />
+          </Key>
+          <Property Name="codigoAl" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ciudad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="domicilio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aniosExpe" Type="Byte" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ContratosCon_Alb" Relationship="Self.fk_codigoAlb" FromRole="Albaniles" ToRole="ContratosCon_Alb" />
+        </EntityType>
+        <EntityType Name="Arquitectos">
+          <Key>
+            <PropertyRef Name="codigoAr" />
+          </Key>
+          <Property Name="codigoAr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ciudad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="domicilio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aniosExpe" Type="Byte" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ContratosCon_Arq" Relationship="Self.fk_codigoAr" FromRole="Arquitectos" ToRole="ContratosCon_Arq" />
+        </EntityType>
+        <EntityType Name="Contratistas">
+          <Key>
+            <PropertyRef Name="codigoC" />
+          </Key>
+          <Property Name="codigoC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ciudad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="domicilio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ContratosCon_Arq" Relationship="Self.fk_codigoC" FromRole="Contratistas" ToRole="ContratosCon_Arq" />
+          <NavigationProperty Name="ContratosCon_Alb" Relationship="Self.fk_codigoCon" FromRole="Contratistas" ToRole="ContratosCon_Alb" />
+        </EntityType>
+        <EntityType Name="ContratosCon_Alb">
+          <Key>
+            <PropertyRef Name="codigoCAlb" />
+          </Key>
+          <Property Name="codigoCAlb" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigoC" Type="Int32" Nullable="false" />
+          <Property Name="codigoAl" Type="Int32" Nullable="false" />
+          <Property Name="contrato" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="estatusCon" Type="Boolean" />
+          <NavigationProperty Name="Albaniles" Relationship="Self.fk_codigoAlb" FromRole="ContratosCon_Alb" ToRole="Albaniles" />
+          <NavigationProperty Name="Contratistas" Relationship="Self.fk_codigoCon" FromRole="ContratosCon_Alb" ToRole="Contratistas" />
+        </EntityType>
+        <EntityType Name="ContratosCon_Arq">
+          <Key>
+            <PropertyRef Name="codigoCArq" />
+          </Key>
+          <Property Name="codigoCArq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigoC" Type="Int32" Nullable="false" />
+          <Property Name="codigoAr" Type="Int32" Nullable="false" />
+          <Property Name="contrato" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="estatusCon" Type="Boolean" />
+          <NavigationProperty Name="Arquitectos" Relationship="Self.fk_codigoAr" FromRole="ContratosCon_Arq" ToRole="Arquitectos" />
+          <NavigationProperty Name="Contratistas" Relationship="Self.fk_codigoC" FromRole="ContratosCon_Arq" ToRole="Contratistas" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="fk_codigoAlb">
+          <End Role="Albaniles" Type="Self.Albaniles" Multiplicity="1" />
+          <End Role="ContratosCon_Alb" Type="Self.ContratosCon_Alb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Albaniles">
+              <PropertyRef Name="codigoAl" />
+            </Principal>
+            <Dependent Role="ContratosCon_Alb">
+              <PropertyRef Name="codigoAl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_codigoAr">
+          <End Role="Arquitectos" Type="Self.Arquitectos" Multiplicity="1" />
+          <End Role="ContratosCon_Arq" Type="Self.ContratosCon_Arq" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arquitectos">
+              <PropertyRef Name="codigoAr" />
+            </Principal>
+            <Dependent Role="ContratosCon_Arq">
+              <PropertyRef Name="codigoAr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_codigoC">
+          <End Role="Contratistas" Type="Self.Contratistas" Multiplicity="1" />
+          <End Role="ContratosCon_Arq" Type="Self.ContratosCon_Arq" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contratistas">
+              <PropertyRef Name="codigoC" />
+            </Principal>
+            <Dependent Role="ContratosCon_Arq">
+              <PropertyRef Name="codigoC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_codigoCon">
+          <End Role="Contratistas" Type="Self.Contratistas" Multiplicity="1" />
+          <End Role="ContratosCon_Alb" Type="Self.ContratosCon_Alb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contratistas">
+              <PropertyRef Name="codigoC" />
+            </Principal>
+            <Dependent Role="ContratosCon_Alb">
+              <PropertyRef Name="codigoC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_CONSTRUCTIONEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Albaniles" EntityType="Self.Albaniles" />
+          <EntitySet Name="Arquitectos" EntityType="Self.Arquitectos" />
+          <EntitySet Name="Contratistas" EntityType="Self.Contratistas" />
+          <EntitySet Name="ContratosCon_Alb" EntityType="Self.ContratosCon_Alb" />
+          <EntitySet Name="ContratosCon_Arq" EntityType="Self.ContratosCon_Arq" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="fk_codigoAlb" Association="Self.fk_codigoAlb">
+            <End Role="Albaniles" EntitySet="Albaniles" />
+            <End Role="ContratosCon_Alb" EntitySet="ContratosCon_Alb" />
+          </AssociationSet>
+          <AssociationSet Name="fk_codigoAr" Association="Self.fk_codigoAr">
+            <End Role="Arquitectos" EntitySet="Arquitectos" />
+            <End Role="ContratosCon_Arq" EntitySet="ContratosCon_Arq" />
+          </AssociationSet>
+          <AssociationSet Name="fk_codigoC" Association="Self.fk_codigoC">
+            <End Role="Contratistas" EntitySet="Contratistas" />
+            <End Role="ContratosCon_Arq" EntitySet="ContratosCon_Arq" />
+          </AssociationSet>
+          <AssociationSet Name="fk_codigoCon" Association="Self.fk_codigoCon">
+            <End Role="Contratistas" EntitySet="Contratistas" />
+            <End Role="ContratosCon_Alb" EntitySet="ContratosCon_Alb" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_CONSTRUCTIONModelStoreContainer" CdmEntityContainer="DB_CONSTRUCTIONEntities">
+          <EntitySetMapping Name="Albaniles">
+            <EntityTypeMapping TypeName="DB_CONSTRUCTIONModel.Albaniles">
+              <MappingFragment StoreEntitySet="Albaniles">
+                <ScalarProperty Name="codigoAl" ColumnName="codigoAl" />
+                <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="domicilio" ColumnName="domicilio" />
+                <ScalarProperty Name="aniosExpe" ColumnName="aniosExpe" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Arquitectos">
+            <EntityTypeMapping TypeName="DB_CONSTRUCTIONModel.Arquitectos">
+              <MappingFragment StoreEntitySet="Arquitectos">
+                <ScalarProperty Name="codigoAr" ColumnName="codigoAr" />
+                <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="domicilio" ColumnName="domicilio" />
+                <ScalarProperty Name="aniosExpe" ColumnName="aniosExpe" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contratistas">
+            <EntityTypeMapping TypeName="DB_CONSTRUCTIONModel.Contratistas">
+              <MappingFragment StoreEntitySet="Contratistas">
+                <ScalarProperty Name="codigoC" ColumnName="codigoC" />
+                <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="domicilio" ColumnName="domicilio" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContratosCon_Alb">
+            <EntityTypeMapping TypeName="DB_CONSTRUCTIONModel.ContratosCon_Alb">
+              <MappingFragment StoreEntitySet="ContratosCon_Alb">
+                <ScalarProperty Name="codigoCAlb" ColumnName="codigoCAlb" />
+                <ScalarProperty Name="codigoC" ColumnName="codigoC" />
+                <ScalarProperty Name="codigoAl" ColumnName="codigoAl" />
+                <ScalarProperty Name="contrato" ColumnName="contrato" />
+                <ScalarProperty Name="estatusCon" ColumnName="estatusCon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContratosCon_Arq">
+            <EntityTypeMapping TypeName="DB_CONSTRUCTIONModel.ContratosCon_Arq">
+              <MappingFragment StoreEntitySet="ContratosCon_Arq">
+                <ScalarProperty Name="codigoCArq" ColumnName="codigoCArq" />
+                <ScalarProperty Name="codigoC" ColumnName="codigoC" />
+                <ScalarProperty Name="codigoAr" ColumnName="codigoAr" />
+                <ScalarProperty Name="contrato" ColumnName="contrato" />
+                <ScalarProperty Name="estatusCon" ColumnName="estatusCon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DB_CONSTRUCTIONModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

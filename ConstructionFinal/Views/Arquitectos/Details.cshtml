@@ -1,0 +1,209 @@
+﻿@model ConstructionFinal.Arquitectos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link rel="stylesheet" href="~/Content/css/main.css" />
+    <style>
+        body {
+            color: white;
+        }
+        .modal-content {
+            background: #B993D6; /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #8CA6DB, #B993D6); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #8CA6DB, #B993D6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+        .modal-title{
+            text-align:center;
+        }
+    </style>
+}
+
+<h2>@Html.DisplayFor(model => model.nombreCompleto)</h2>
+
+<div id="user-profile-2" class="user-profile">
+    <div class="tabbable">
+        <ul class="nav nav-tabs padding-18">
+            <li class="active">
+
+            </li>
+        </ul>
+
+        <div class="tab-content no-border padding-24">
+            <div id="home" class="tab-pane in active">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-3 center">
+                        <span class="profile-picture">
+                            <img class="editable img-responsive" alt=" Avatar" id="avatar2" src="https://cdn-icons-png.flaticon.com/512/2714/2714574.png">
+                        </span>
+
+                        <div class="space space-4"></div>
+
+                    </div><!-- /.col -->
+
+                    <div class="col-xs-12 col-sm-9">
+                        <br />
+                        <div class="profile-user-info">
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">Nombre Completo</div>
+
+                                <div class="profile-info-value">
+                                    <span>@Html.DisplayFor(model => model.nombreCompleto)</span>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">Ciudad</div>
+
+                                <div class="profile-info-value">
+                                    <i class="fa fa-map-marker light-orange bigger-110"></i>
+                                    <span>@Html.DisplayFor(model => model.ciudad)</span>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">Dirección</div>
+
+                                <div class="profile-info-value">
+                                    <span>@Html.DisplayFor(model => model.domicilio)</span>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">Años de experiencia</div>
+
+                                <div class="profile-info-value">
+                                    <span>@Html.DisplayFor(model => model.aniosExpe) años</span>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">Numero de Telefono</div>
+
+                                <div class="profile-info-value">
+                                    <span>@Html.DisplayFor(model => model.telefono)</span>
+                                    <br />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">Correo</div>
+
+                                <div class="profile-info-value">
+                                    <span>@Html.DisplayFor(model => model.correo)</span>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+
+                        <div class="hr hr-8 dotted"></div>
+
+                        <div class="profile-user-info">
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> </div>
+
+                                <div class="profile-info-value">
+                                    <a href="#" target="_blank"></a>
+                                </div>
+                            </div>
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">
+                                    <i class="middle ace-icon fa fa-facebook-square bigger-150 blue"></i>
+                                </div>
+
+                                <div class="profile-info-value">
+                                    <a href="#"></a>
+                                </div>
+                            </div>
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">
+                                    <i class="middle ace-icon fa fa-twitter-square bigger-150 light-blue"></i>
+                                </div>
+
+                                <div class="profile-info-value">
+                                    <a href="#"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+
+                <div class="space-20"></div>
+
+            </div><!-- /#home -->
+        </div>
+    </div>
+</div>
+
+
+
+@*<p>@Html.ActionLink("Contratar", "Contrato", new { id = Model.codigoAr })</p>*@
+<button type="button" class="btn btn-success dropdown-toggle"
+        aria-haspopup="true" aria-expanded="false"
+        data-target="#modal_contratar_arquitecto" data-toggle="modal"
+        data-backdrop="static" data-keyboard="false"
+        onclick="contratar_arq('@Model.codigoAr')">
+    Contratar
+</button>
+<br />
+<br />
+<button type="button" class="btn btn-warning dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+    @Html.ActionLink("Editar", "Edit", new { id = Model.codigoAr })
+</button>
+
+<button type="button" class="btn btn-info dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+    @Html.ActionLink("Regresar", "Index")
+</button>
+
+
+
+<div id="modal_contratar_arquitecto" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Detalles de Contratación</h4>
+            </div>
+            <div class="modal-body">
+                <iframe src="https://localhost:44302/Arquitectos/Contrato/@Model.codigoAr" width="100%" height="600px"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-dismiss="modal">Cerrar</button> <button type="button" class="btn btn-success dropdown-toggle"
+                                                                                            aria-haspopup="true" aria-expanded="false"
+                                                                                            data-target="#modal_confirmar_contrato" data-toggle="modal"
+                                                                                            data-backdrop="static" data-keyboard="false">
+                    Formalizar Contrato
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="modal_confirmar_contrato" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">¿Estas seguro de que quieres confirmar el contrato?</h4>
+            </div>
+            <div class="modal-body" id="alerta">
+                <p>
+                    Al confirmar este contrato se descargará automaticamente en su equipo
+                    y posteriormente se enviará una copia por correo al arquitecto, 
+                    para que este pueda revisarlo y darle una respuesta lo más pronto posible.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-dismiss="modal">Cancelar</button> <button class="btn btn-success" data-dismiss="modal" onclick="descargar()">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    descargar = function () {
+        @*@Html.ActionLink("Aceptar", "GenerarContrato", new { id = Model.codigoAr })*@
+        window.location.href = "https://localhost:44302/Arquitectos/GenerarContrato/@Model.codigoAr";
+    }
+</script>

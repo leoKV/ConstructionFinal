@@ -1,0 +1,97 @@
+﻿@model IEnumerable<ConstructionFinal.Arquitectos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link rel="stylesheet" href="~/Content/css/main.css" />
+    <style>
+        body {
+            color:white;
+        }
+    </style>
+}
+<h2>Arquitectos</h2>
+<br />
+<button type="button" class="btn btn-default dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+    @Html.ActionLink("Agregar nuevo", "Create")
+</button>
+<br />
+<br />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-0 col-md-6">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h3>@Html.DisplayFor(modelItem => item.nombreCompleto)</h3>
+                    <div class="tab-content no-border padding-24">
+                        <div id="home" class="tab-pane in active">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-5 center">
+                                    <span class="profile-picture">
+                                        <img class="editable img-responsive" alt=" Avatar" id="avatar2" src="https://cdn-icons-png.flaticon.com/512/2714/2714574.png">
+                                    </span>
+
+                                    <div class="space space-4">
+                                        <button type="button" class="btn btn-info dropdown-toggle" aria-haspopup="true" aria-expanded="false">@Html.ActionLink("Ver Perfil", "Details", new { id = item.codigoAr })</button>
+                                    </div>
+
+                                </div><!-- /.col -->
+
+                                <div class="col-xs-12 col-sm-7">
+
+
+                                    <div class="profile-user-info">
+                                        <br />
+
+                                        <div class="profile-info-row">
+                                            <div class="profile-info-name">Ciudad</div>
+                                            <span>@Html.DisplayFor(modelItem => item.ciudad)</span>
+                                            <br />
+                                            <br />
+
+                                        </div>
+
+                                        <div class="profile-info-row">
+                                            <div class="profile-info-name">Años de Experiencia</div>
+                                            <span>@Html.DisplayFor(modelItem => item.aniosExpe)</span>
+                                            <br />
+                                            <div class="profile-info-value">
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="profile-info-row">
+                                            <div class="profile-info-name">Telefono</div>
+                                            <div class="profile-info-value">
+                                                <span>@Html.DisplayFor(modelItem => item.telefono)</span>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="profile-info-row">
+                                            <div class="profile-info-name">Correo</div>
+
+                                            <div class="profile-info-value">
+                                                <span>@Html.DisplayFor(modelItem => item.correo)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="hr hr-8 dotted"></div>
+
+
+                                </div><!-- /.col -->
+                            </div><!-- /.row -->
+
+                            <div class="space-20"></div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>

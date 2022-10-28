@@ -1,0 +1,130 @@
+﻿@model ConstructionFinal.Contratistas
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link rel="stylesheet" href="~/Content/css/main.css" />
+    <style>
+        body{
+            color:white;
+        }
+    </style>
+}
+
+<h2>Hola! @Html.DisplayFor(model => model.nombreCompleto)</h2>
+<button type="button" class="btn btn-default dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+ @Html.ActionLink("Editar Perfil", "Edit", new { id = Model.codigoC }) 
+</button>
+
+<br />
+<br />
+<div id="user-profile-2" class="user-profile">
+    <div class="tabbable">
+        <ul class="nav nav-tabs padding-18">
+            <li class="active">
+
+            </li>
+        </ul>
+
+        <div class="tab-content no-border padding-24">
+            <div id="home" class="tab-pane in active">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-3 center">
+                        <span class="profile-picture">
+                            <img class="editable img-responsive" alt=" Avatar" id="avatar2" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1200px-User_icon_2.svg.png">
+                        </span>
+
+                        <div class="space space-4"></div>
+
+                    </div><!-- /.col -->
+
+                    <div class="col-xs-12 col-sm-9">
+                        <h4 class="blue">
+                            <span class="middle">@Html.DisplayFor(model => model.nombreCompleto)</span>
+                        </h4>
+                        <br />
+                        <div class="profile-user-info">
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">Nombre Completo</div>
+
+                                <div class="profile-info-value">
+                                    <span>@Html.DisplayFor(model => model.nombreCompleto)</span>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">Ciudad</div>
+
+                                <div class="profile-info-value">
+                                    <i class="fa fa-map-marker light-orange bigger-110"></i>
+                                    <span>@Html.DisplayFor(model => model.ciudad)</span>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">Dirección</div>
+
+                                <div class="profile-info-value">
+                                    <span>@Html.DisplayFor(model => model.domicilio)</span>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">Numero de Telefono</div>
+
+                                <div class="profile-info-value">
+                                    <span>@Html.DisplayFor(model => model.telefono)</span>
+                                    <br />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">Correo</div>
+
+                                <div class="profile-info-value">
+                                    <span>@Html.DisplayFor(model => model.correo)</span>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+
+                        <div class="hr hr-8 dotted"></div>
+
+                        <div class="profile-user-info">
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> </div>
+
+                                <div class="profile-info-value">
+                                    <a href="#" target="_blank"></a>
+                                </div>
+                            </div>
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">
+                                    <i class="middle ace-icon fa fa-facebook-square bigger-150 blue"></i>
+                                </div>
+
+                                <div class="profile-info-value">
+                                    <a href="#"></a>
+                                </div>
+                            </div>
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">
+                                    <i class="middle ace-icon fa fa-twitter-square bigger-150 light-blue"></i>
+                                </div>
+
+                                <div class="profile-info-value">
+                                    <a href="#"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+
+                <div class="space-20"></div>
+
+            </div><!-- /#home -->
+        </div>
+    </div>
+</div>
